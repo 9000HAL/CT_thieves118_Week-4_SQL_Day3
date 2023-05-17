@@ -7,6 +7,10 @@ FROM favorite_song;
 -- NOTE: FROM clause = Left Table, JOIN clause = Right Table
 
 -- INNER JOIN: Returns records that have matching values in both tables
+SELECT *
+FROM artist
+INNER JOIN favorite_song
+ON artist.artist_id = favorite_song.artist_id
 
 
 -- LEFT JOIN: Returns all records from the left table, and the matched records from the right table
