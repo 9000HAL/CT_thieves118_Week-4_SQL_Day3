@@ -6,16 +6,17 @@
 
 --1. List all customers who live in Texas (use JOINs)  
 
+-- List all customers who live in Texas
 SELECT *
 FROM customer
-
--- JOIN the payment table to retrieve customer information
-JOIN payment ON customer.customer_id = payment.customer_id
-
+-- JOIN the address table to retrieve customer address information
+JOIN address ON customer.address_id = address.address_id
+-- JOIN the city table to retrieve city information
+JOIN district ON address.district_id = district.district_id
 -- FILTER the results to only include customers from Texas
-WHERE address_id = 'Texas';
+WHERE address.district = 'Texas';
 
--> Gabe CURRENT QUERY RESULT: invalid input syntax for type smallint: "Texas"
+-> Gabe CURRENT QUERY RESULT: relation "district" does not exist
 
 
 
