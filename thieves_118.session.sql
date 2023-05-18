@@ -132,13 +132,59 @@ ORDER BY COUNT(*) DESC
 
 --6. How many movies of each rating are there?
 
+-- COUNT the number of movies for each rating
+SELECT film.rating, COUNT(*) AS film_count
+FROM film
+-- GROUP the results by rating
+GROUP BY film.rating;
+
+-> ANSWER:
+
+"rating","film_count"
+"NC-17","209"
+"G","178"
+"PG-13","223"
+"PG","194"
+"R","196"
 
 
 
 
+-- 7.Show all customers who have made a single payment above $6.99 (Use Subqueries) 
+***** NOTE: (2)ANSWERS HERE DEPENDING UPON INTERPRETATION OF QUESTION:
+
+-- 7.(a) Show all customers who have made a single payment(AS IN AT LEAST ONE AND ONLY ONE) above $6.99 (Use Subqueries) 
+
+-- SELECT the customer's first name and last name
+SELECT customer.first_name, customer.last_name
+FROM customer
+-- JOIN the payment table to retrieve payment info
+JOIN payment ON customer.customer_id = payment.customer_id
+-- FILTER the results to include customers with only one payment above $6.99
+WHERE payment.amount > 6.99
+GROUP BY customer.customer_id, customer.first_name, customer.last_name
+HAVING COUNT(*) = 1;
+
+-> 7.(a) ANSWER:
+
+"first_name","last_name"
+"Douglas","Graf"
+"Alvin","Deloach"
+"Alfredo","Mcadams"
 
 
---7.Show all customers who have made a single payment above $6.99 (Use Subqueries) 
+***** CONSIDERING ANOTHER INTERPRETATION:
+-- 7.(b) Show all customers who have made a single payment(AS IN AT LEAST ONE AND INCLUDING MORE THAN ONE) above $6.99 (Use Subqueries) 
+
+-- SELECT the customer's first name and last name
+SELECT customer.first_name, customer.last_name
+FROM customer
+-- JOIN the payment table to retrieve payment info
+JOIN payment ON customer.customer_id = payment.customer_id
+-- FILTER the results to include customers with only one payment above $6.99
+WHERE payment.amount > 6.99
+GROUP BY customer.customer_id, customer.first_name, customer.last_name
+HAVING COUNT(*) >= 1;
 
 
 
