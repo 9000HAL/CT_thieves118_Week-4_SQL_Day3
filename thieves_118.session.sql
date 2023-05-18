@@ -207,3 +207,8 @@ FROM rental
 JOIN payment ON rental.rental_id = payment.rental_id
 -- FILTER the results to include payments where the amount is $0.00
 WHERE payment.amount = 0.00;
+
+-> ANSWER:
+
+"free_rental_count"
+"0"
