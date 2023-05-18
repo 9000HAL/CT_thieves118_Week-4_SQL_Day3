@@ -174,7 +174,7 @@ HAVING COUNT(*) = 1;
 
 
 ***** CONSIDERING ANOTHER INTERPRETATION:
--- 7.(b) Show all customers who have made a single payment(AS IN AT LEAST ONE AND INCLUDING MORE THAN ONE) above $6.99 (Use Subqueries) 
+-- 7.(b) Show all customers who have made a single payment(AS IN AT LEAST ONE SINGLE PAYMENT AND INCLUDING ALSO MORE THAN ONE PAYMENT) above $6.99 (Use Subqueries) 
 
 -- SELECT the customer's first name and last name
 SELECT customer.first_name, customer.last_name
@@ -186,7 +186,24 @@ WHERE payment.amount > 6.99
 GROUP BY customer.customer_id, customer.first_name, customer.last_name
 HAVING COUNT(*) >= 1;
 
+-> 7.(b) ANSWER:
+
+"first_name","last_name"
+"Mary","Smith"
+"Peter","Menard"
+"Douglas","Graf"
+"Alvin","Deloach"
+"Alfredo","Mcadams"
+
 
 
 
 --8. How many free rentals did our stores give away?
+
+-- COUNT the number of free rentals given away
+SELECT COUNT(*) AS free_rental_count
+FROM rental
+-- JOIN the payment table to retrieve payment information
+JOIN payment ON rental.rental_id = payment.rental_id
+-- FILTER the results to include payments where the amount is $0.00
+WHERE payment.amount = 0.00;
