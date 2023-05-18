@@ -22,17 +22,17 @@ WHERE address_id = 'Texas';
 
 --2. Get all payments above $6.99 with the Customer's Full Name  
 
-
 -- Select the customer's first name, last name, and payment amount
 SELECT customer.first_name, customer.last_name, payment.amount
 FROM customer
+
 -- Join the Payments table to retrieve payment information
 JOIN payment ON customer.customer_id = payment.customer_id
+
 -- Filter the results to only include payments above $6.99
 WHERE payment.amount > 6.99;
 
 -> ANSWER:
-
 
 "first_name","last_name","amount"
 "Douglas","Graf","919.67"
@@ -66,20 +66,37 @@ WHERE payment.amount > 6.99;
 
 
 
-
-
-
-
-
-
 --3. Show all customers names who have made payments over $175(use subqueries) 
+
+-- Select the customer's first name and last name
+SELECT customer.first_name, customer.last_name
+FROM customer
+
+-- Join the Payments table to retrieve payment information
+JOIN payment ON customer.customer_id = payment.customer_id
+
+-- Filter the results to only include payments over $175
+WHERE payment.amount > 175;
+
+-> ANSWER:
+
+"first_name","last_name"
+"Douglas","Graf"
+"Mary","Smith"
+"Mary","Smith"
 
 
 
 
 --4. List all customers that live in Nepal (use the city table)
 
-
+-- Select the customer's first name, last name, and city name
+SELECT customer.first_name, customers.last_name, city.city_name
+FROM customer
+-- Join the City table to retrieve city information
+JOIN city ON customer.city_id = city.city_id
+-- Filter the results to only include customers from Nepal
+WHERE city.country = 'Nepal';
 
 
 --5. Which staff member had the most transactions?  
