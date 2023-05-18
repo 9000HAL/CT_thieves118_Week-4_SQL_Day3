@@ -14,11 +14,22 @@ ON artist.artist_id = favorite_song.artist_id
 
 
 -- LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+SELECT *
+FROM artist_id
+LEFT JOIN favorite_song
+ON artist.artist_id = favorite_song.artist_id
 
 
 -- RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
 
-
+SELECT *
+FROM artist
+RIGHT JOIN favorite_song
+ON artist.artist_id = favorite_song.artist_id
 
 -- FULL JOIN: Returns all records
 
+SELECT *
+FROM artist
+FULL OUTER JOIN favorite_song
+ON artist.artist_id = favorite_song.artist_id
