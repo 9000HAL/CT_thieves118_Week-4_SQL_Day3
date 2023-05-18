@@ -90,21 +90,50 @@ WHERE payment.amount > 175;
 
 --4. List all customers that live in Nepal (use the city table)
 
+SELECT *
+FROM country
+-> Nepal country_id = '66'
+
 -- Select the customer's first name, last name, and city name
-SELECT customer.first_name, customers.last_name, city.city_name
+SELECT customer.first_name, customer.last_name, city.country_id
 FROM customer
 -- Join the City table to retrieve city information
-JOIN city ON customer.city_id = city.city_id
+JOIN city ON customer.address_id = city.city_id
 -- Filter the results to only include customers from Nepal
-WHERE city.country = 'Nepal';
+WHERE city.country_id = '66';
+
+-> ANSWER:
+
+"first_name","last_name","country_id"
+"Jane","Bennett",66
+
+
 
 
 --5. Which staff member had the most transactions?  
+
+-- SELECT for the staff member with the highest number of transactions( = RENTAL not PAYMENT)
+SELECT staff.staff_id, staff.first_name, staff.last_name
+FROM staff
+-- Join the Transactions table to retrieve transaction information
+JOIN rental ON staff.staff_id = rental.staff_id
+-- Group the results by staff member and count the number of transactions
+GROUP BY staff.staff_id, staff.first_name, staff.last_name
+-- Order the results in descending order based on the number of transactions
+ORDER BY COUNT(*) DESC
+
+-> ANSWER:
+
+"staff_id","first_name","last_name"
+1,"Mike","Hillyer"
 
 
 
 
 --6. How many movies of each rating are there?
+
+
+
 
 
 
