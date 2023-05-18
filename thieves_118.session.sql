@@ -1,4 +1,5 @@
---Week 5 - Wednesday Questions  
+------------------------------------------------------------------------
+--Week 5 - Wednesday Questions -----------------------------------------
 
 
 
@@ -7,21 +8,68 @@
 
 SELECT *
 FROM customer
--- Join the Orders table to retrieve customer information
+
+-- JOIN the payment table to retrieve customer information
 JOIN payment ON customer.customer_id = payment.customer_id
--- Filter the results to only include customers from Texas
+
+-- FILTER the results to only include customers from Texas
 WHERE address_id = 'Texas';
 
---> CURRENT QUERY RESULT: invalid input syntax for type smallint: "Texas"
+-> Gabe CURRENT QUERY RESULT: invalid input syntax for type smallint: "Texas"
 
-
-
-SELECT *
-FROM district
 
 
 
 --2. Get all payments above $6.99 with the Customer's Full Name  
+
+
+-- Select the customer's first name, last name, and payment amount
+SELECT customer.first_name, customer.last_name, payment.amount
+FROM customer
+-- Join the Payments table to retrieve payment information
+JOIN payment ON customer.customer_id = payment.customer_id
+-- Filter the results to only include payments above $6.99
+WHERE payment.amount > 6.99;
+
+-> ANSWER:
+
+
+"first_name","last_name","amount"
+"Douglas","Graf","919.67"
+"Mary","Smith","478.86"
+"Alfredo","Mcadams","74.94"
+"Mary","Smith","980.45"
+"Peter","Menard","73.99"
+"Peter","Menard","67.99"
+"Peter","Menard","73.99"
+"Peter","Menard","68.99"
+"Peter","Menard","73.99"
+"Peter","Menard","71.99"
+"Peter","Menard","66.99"
+"Peter","Menard","72.99"
+"Alvin","Deloach","33.44"
+"Peter","Menard","68.99"
+"Peter","Menard","66.99"
+"Peter","Menard","74.99"
+"Peter","Menard","70.99"
+"Peter","Menard","70.99"
+"Peter","Menard","66.99"
+"Peter","Menard","72.99"
+"Peter","Menard","70.99"
+"Peter","Menard","68.99"
+"Peter","Menard","70.99"
+"Peter","Menard","66.99"
+"Peter","Menard","68.99"
+"Peter","Menard","68.99"
+"Peter","Menard","75.99"
+
+
+
+
+
+
+
+
 
 
 --3. Show all customers names who have made payments over $175(use subqueries) 
